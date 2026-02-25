@@ -12,19 +12,37 @@ export default function Logo() {
       <img
         src={logo}
         alt=""
-        className="h-9 w-9 sm:h-10 sm:w-10 rounded-xl drop-shadow-[0_0_18px_rgba(255,80,0,0.18)] shrink-0"
+        className="
+          h-9 w-9 sm:h-10 sm:w-10
+          rounded-xl
+          shrink-0
+          transition
+          drop-shadow-[0_0_16px_rgba(255,59,48,0.35)]
+          group-hover:drop-shadow-[0_0_22px_rgba(255,59,48,0.55)]
+        "
         loading="eager"
       />
 
-      {/* Text */}
-      <span className="min-w-0 leading-none">
-        <span className="block truncate text-white font-semibold tracking-[0.14em] uppercase text-[13px] sm:text-sm">
+      <span className="min-w-0 leading-tight">
+        <span className="
+          block truncate
+          text-white
+          font-semibold
+          tracking-[0.16em]
+          uppercase
+          text-[13px] sm:text-sm
+        ">
           Guatemalan
         </span>
 
-        {/* On very small screens, keep this hidden to avoid wrapping.
-            Shows starting at sm (640px). */}
-        <span className="hidden sm:block truncate text-white/80 font-medium tracking-[0.18em] uppercase text-[11px]">
+        <span className="
+          hidden sm:block truncate
+          text-gg-lava
+          font-medium
+          tracking-[0.18em]
+          uppercase
+          text-[11px]
+        ">
           Golf
         </span>
       </span>
