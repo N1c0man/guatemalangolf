@@ -12,7 +12,7 @@ export default function Logo() {
         loading="eager"
       />
       <span className="text-white font-semibold tracking-[0.14em] uppercase">
-        Guatemalan
+        Guatemalan Golf
       </span>
     </Link>
   );
