@@ -1,11 +1,12 @@
 // src/utils/seo.js
 
-// Base site URL – use the www version
-export const SITE_URL = "https://www.buddymoney.com";
+export const SITE_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://guatemalangolf.com"
+    : "http://localhost:3000";
 
 // Simple DOM helper: NO React hooks here
 export function setCanonical(pathOrUrl = "/") {
-  // Guard for safety during SSR / build
   if (typeof document === "undefined") return;
 
   let href = pathOrUrl;
@@ -16,10 +17,9 @@ export function setCanonical(pathOrUrl = "/") {
     href = base + (href.startsWith("/") ? href : "/" + href);
   }
 
-  // Strip query params and hashes for canonical cleanliness
+  // Strip query params and hashes
   href = href.split(/[?#]/)[0];
 
-  // Find or create the canonical <link> tag
   let link = document.querySelector('link[rel="canonical"]');
   if (!link) {
     link = document.createElement("link");

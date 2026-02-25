@@ -22,8 +22,9 @@ export default function SocialShare({
   // If we still don't have a URL (very first render), don't render anything
   if (!shareUrl) return null;
 
-  const shareTitle = title || "Check this out on BuddyMoney";
-  const shareText = text || "I found this helpful on BuddyMoney and wanted to share it with you.";
+  const shareTitle = title || document.title;
+  const shareText =
+  text || "I thought you might find this interesting.";
 
   const encodedUrl = encodeURIComponent(shareUrl);
   const encodedText = encodeURIComponent(shareText);
