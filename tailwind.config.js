@@ -5,17 +5,28 @@ module.exports = {
     extend: {
       colors: {
         // Guatemalan Golf theme
-        "gg-ink": "#07070A",     // near-black
-        "gg-ash": "#121218",     // soft charcoal
-        "gg-lava": "#FF3B30",    // lava red
-        "gg-ember": "#FF6A00",   // ember orange
-        "gg-moss": "#1DB954",    // optional green accent
+        "gg-ink": "#07070A", // near-black
+        "gg-ash": "#121218", // soft charcoal
+        "gg-lava": "#FF3B30", // lava red
+        "gg-ember": "#FF6A00", // ember orange
+        "gg-moss": "#1DB954", // optional green accent
       },
       boxShadow: {
         glow: "0 0 0 1px rgba(255,255,255,0.08), 0 30px 80px rgba(0,0,0,0.55)",
       },
       borderRadius: {
         xl2: "1.25rem",
+      },
+
+      // ✅ ADD THIS:
+      keyframes: {
+        emberPulse: {
+          "0%, 100%": { opacity: "0.35", transform: "scale(1)" },
+          "50%": { opacity: "0.65", transform: "scale(1.08)" },
+        },
+      },
+      animation: {
+        emberPulse: "emberPulse 3.6s ease-in-out infinite",
       },
     },
   },
