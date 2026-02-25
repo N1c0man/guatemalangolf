@@ -1,0 +1,22 @@
+{
+  "short_name": "GGolf",
+  "name": "Guatemalan Golf — Volcano Views • Premium Golf • Travel",
+  "icons": [
+    {
+      "src": "/gg_favicon_peak_192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/gg_favicon_peak_512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#07070A",
+  "background_color": "#07070A"
+}
