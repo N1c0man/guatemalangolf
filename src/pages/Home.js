@@ -11,7 +11,7 @@ const fadeUp = {
 
 export default function Hero() {
   return (
-    <section className="relative pt-10 sm:pt-24 lg:pt-20 pb-20 sm:pb-24">
+    <section className="relative pt-7 sm:pt-24 lg:pt-20 pb-20 sm:pb-24">
       {/* Ambient glows (warm + clean on light background) */}
       <motion.div
         className="pointer-events-none absolute -top-24 -right-10 h-72 w-72 rounded-full bg-gg-ember/16 blur-3xl"
