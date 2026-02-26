@@ -5,6 +5,8 @@ import TikTokEmbed from "../components/TikTokEmbed";
 const VIDEOS = [
   { id: "7600564842461793556" },
   { id: "7610641142526283028" },
+  { id: "7598563264062180619" },
+  { id: "7584129171689917708" },
 ];
 
 function TikTokIcon({ className = "" }) {
