@@ -1,4 +1,4 @@
-// src/components/Hero.jsx
+// src/pages/Home.js
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -35,7 +35,7 @@ export default function Hero() {
             // inner rim for premium “framed” feel
             "ring-1 ring-white/10",
             // premium dark surface
-            "bg-[#07070a]",
+            "bg-gradient-to-b from-[#1a1a1f] via-[#141418] to-[#0e0e12]",
             // stronger elevation
             "shadow-[0_40px_110px_rgba(0,0,0,0.26)]",
           ].join(" ")}
@@ -48,8 +48,11 @@ export default function Hero() {
             {/* soft top rim */}
             <div className="absolute inset-0 bg-gradient-to-b from-white/12 via-transparent to-transparent" />
             {/* inner dark vignette (slightly lighter bottom so text stays readable) */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/45 to-black/60" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-black/35 to-black/50" />
           </div>
+
+          {/* ✅ Extra faint inner glow ring (studio lighting feel) */}
+          <div className="absolute inset-0 ring-1 ring-white/5 rounded-3xl pointer-events-none" />
 
           {/* Foreground */}
           <div className="relative p-7 sm:p-10 lg:p-14">
@@ -88,8 +91,9 @@ export default function Hero() {
                 transition={{ duration: 0.5, ease: "easeOut", delay: 0.12 }}
                 className="mx-auto max-w-2xl text-base sm:text-lg text-white/85 drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]"
               >
-                Premium golf experiences in Guatemala — volcano views, curated
-                courses, and unforgettable travel.
+                Discover Guatemala's premier golf getaway - spectacular volcano
+                backdrops, hand picked courses, and a travel experience you will
+                never forget.
               </motion.p>
 
               {/* CTAs */}
