@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* -------------------------------------------------------------
+   BASE THEME
+------------------------------------------------------------- */
+
 :root {
   --bg: #f8fafc;
 }
@@ -12,19 +16,39 @@ body {
     Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
 }
 
-/* Subtle paper/noise texture */
+/* -------------------------------------------------------------
+   PREMIUM PAPER GRAIN (VISIBLE BUT REFINED)
+------------------------------------------------------------- */
+
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 0;
+  z-index: -1; /* ensure it never overlays embeds */
 
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
   background-repeat: repeat;
+
+  /* premium look */
+  mix-blend-mode: multiply;
+  opacity: 0.28; /* adjust between 0.18 – 0.35 if needed */
 }
 
-/* --- small fade-up animation for success/error messages --- */
+/* -------------------------------------------------------------
+   TIKTOK EMBED FIX
+------------------------------------------------------------- */
+
+.tiktok-embed {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+}
+
+/* -------------------------------------------------------------
+   SMALL FADE-UP ANIMATION
+------------------------------------------------------------- */
+
 @keyframes fade-in-up {
   from {
     opacity: 0;
@@ -35,6 +59,7 @@ body::before {
     transform: translateY(0);
   }
 }
+
 .animate-fade-in {
   animation: fade-in-up 0.4s ease-out forwards;
 }
@@ -44,8 +69,9 @@ body::before {
 }
 
 /* -------------------------------------------------------------
-   PREMIUM DROP CAP — safe, stable version
-   ------------------------------------------------------------- */
+   PREMIUM DROP CAP
+------------------------------------------------------------- */
+
 .blog-article-body p:first-of-type::first-letter {
   font-size: 2.85rem;
   line-height: 0.9;
@@ -69,11 +95,12 @@ body::before {
 }
 
 /* -------------------------------------------------------------
-   STRONG TOOL HIGHLIGHT FLASH (used by WelcomeBackBanner)
-   ------------------------------------------------------------- */
+   STRONG TOOL HIGHLIGHT FLASH
+------------------------------------------------------------- */
+
 @keyframes flashHighlight {
   0% {
-    background-color: rgba(16, 185, 129, 0.4); /* brighter emerald tint */
+    background-color: rgba(16, 185, 129, 0.4);
     box-shadow:
       0 0 0 4px rgba(16, 185, 129, 0.55),
       0 0 35px rgba(16, 185, 129, 0.65);
@@ -92,9 +119,9 @@ body::before {
 
 .animate-flashHighlight {
   animation: flashHighlight 1.2s ease-out;
-  position: relative;           /* ensures highlight sits above card bg */
+  position: relative;
   z-index: 20;
-  border-radius: 1rem;          /* matches .rounded-2xl on cards */
-  overflow: visible;            /* keep shadow visible outside card */
-  transform: translateZ(0);     /* fixes GPU paint issues in Safari */
+  border-radius: 1rem;
+  overflow: visible;
+  transform: translateZ(0);
 }
