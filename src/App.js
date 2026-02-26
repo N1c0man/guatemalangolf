@@ -10,6 +10,7 @@ import MainLayout from "./layouts/MainLayout";
 // Pages
 import Videos from "./pages/Videos";
 import Home from "./pages/Home";
+import About from "./pages/About";
 
 // Simple placeholder pages so the build never fails while we rebuild
 function Placeholder({ title, subtitle }) {
@@ -55,13 +56,7 @@ export default function App() {
               />
             }
           />
-          <Route
-            path="/about"
-            element={
-              <Placeholder
-                title="About"
-                subtitle="The story behind Guatemalan Golf — volcano views, fairways, and good vibes."
-              />
+          <Route path="/about" element={<About />} />
             }
           />
           <Route
