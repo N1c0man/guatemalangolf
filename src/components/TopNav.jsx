@@ -70,25 +70,27 @@ export default function TopNav() {
   const linkClass = ({ isActive }) =>
     [
       "px-3 py-2 rounded-full text-sm tracking-[0.12em] transition",
-      "border border-white/10",
+      "border border-black/10",
       isActive
-        ? "bg-white/10 text-white shadow-[0_0_24px_rgba(255,80,0,0.18)]"
-        : "bg-white/5 text-white/70 hover:text-white hover:bg-white/10",
+        ? "bg-gg-lava text-white shadow-[0_10px_28px_rgba(230,57,46,0.25)]"
+        : "bg-white/70 text-gg-ink hover:bg-gg-sand",
+      "focus:outline-none focus:ring-2 focus:ring-gg-lava/40",
     ].join(" ");
 
   const mobileLinkClass = ({ isActive }) =>
     [
       "flex items-center justify-between rounded-xl px-4 py-3 text-sm tracking-[0.12em] transition",
-      "border border-white/10",
+      "border border-black/10",
       isActive
-        ? "bg-white/10 text-white shadow-[0_0_18px_rgba(255,80,0,0.12)]"
-        : "bg-white/5 text-white/80 hover:bg-white/10",
+        ? "bg-gg-lava text-white shadow-[0_10px_26px_rgba(230,57,46,0.22)]"
+        : "bg-white/80 text-gg-ink hover:bg-gg-sand",
+      "focus:outline-none focus:ring-2 focus:ring-gg-lava/40",
     ].join(" ");
 
   return (
     <header className="sticky top-0 z-50">
-      {/* Glass bar */}
-      <div className="border-b border-white/10 bg-black/70 backdrop-blur">
+      {/* Light glass bar */}
+      <div className="border-b border-black/10 bg-white/80 backdrop-blur">
         <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
           <Logo />
 
@@ -111,29 +113,31 @@ export default function TopNav() {
             type="button"
             className={[
               "md:hidden inline-flex items-center justify-center",
-              "h-10 w-10 rounded-full",
-              "border border-white/10 bg-white/5",
-              "text-white/90 hover:text-white",
-              "hover:bg-white/10 transition",
-              // subtle lava glow to match your theme
-              "shadow-[0_0_0_0_rgba(255,80,0,0)] hover:shadow-[0_0_24px_rgba(255,80,0,0.18)]",
-              "focus:outline-none focus:ring-2 focus:ring-gg-lava/40 focus:ring-offset-0",
+              "h-11 w-11 rounded-xl",
+              "border border-black/10 bg-white/80",
+              "text-gg-ink hover:bg-gg-sand transition",
+              "shadow-[0_10px_28px_rgba(0,0,0,0.08)]",
+              "focus:outline-none focus:ring-2 focus:ring-gg-lava/40",
             ].join(" ")}
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
           >
-            {open ? <IconX className="text-white" /> : <IconHamburger className="text-white" />}
+            {open ? (
+              <IconX className="text-gg-ink" />
+            ) : (
+              <IconHamburger className="text-gg-ink" />
+            )}
           </button>
         </div>
       </div>
 
       {/* Thin lava accent line */}
-      <div className="h-[2px] bg-gradient-to-r from-transparent via-gg-lava/60 to-transparent" />
+      <div className="h-[2px] bg-gradient-to-r from-transparent via-gg-lava/70 to-transparent" />
 
       {/* Mobile dropdown panel */}
       {open && (
-        <div className="md:hidden border-b border-white/10 bg-black/80 backdrop-blur">
+        <div className="md:hidden border-b border-black/10 bg-white/85 backdrop-blur">
           <div className="mx-auto max-w-6xl px-4 py-4">
             <div className="grid gap-2">
               {nav.map((item) => (
@@ -145,12 +149,12 @@ export default function TopNav() {
                   onClick={() => setOpen(false)}
                 >
                   <span>{item.label}</span>
-                  <span className="text-gg-lava/70">›</span>
+                  <span className="text-gg-lava/80">›</span>
                 </NavLink>
               ))}
             </div>
 
-            <div className="mt-4 text-xs text-white/40">
+            <div className="mt-4 text-xs text-gg-muted">
               Guatemala • Golf • Volcano Views
             </div>
           </div>
