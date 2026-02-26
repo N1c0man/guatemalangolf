@@ -1,25 +1,43 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 
 export default function TikTokEmbed({ videoId, username = "guatemalangolf" }) {
-  useEffect(() => {
-    // Load TikTok embed script once
-    if (document.querySelector('script[src="https://www.tiktok.com/embed.js"]')) {
-      // Script already exists; ask TikTok to re-scan embeds
-      if (window.tiktokEmbedLoad) window.tiktokEmbedLoad();
-      return;
-    }
+  const containerRef = useRef(null);
 
-    const script = document.createElement("script");
-    script.src = "https://www.tiktok.com/embed.js";
-    script.async = true;
-    script.onload = () => {
-      if (window.tiktokEmbedLoad) window.tiktokEmbedLoad();
+  useEffect(() => {
+    const loadScript = () => {
+      return new Promise((resolve) => {
+        if (document.querySelector('script[src="https://www.tiktok.com/embed.js"]')) {
+          resolve();
+          return;
+        }
+
+        const script = document.createElement("script");
+        script.src = "https://www.tiktok.com/embed.js";
+        script.async = true;
+        script.onload = resolve;
+        document.body.appendChild(script);
+      });
     };
-    document.body.appendChild(script);
-  }, []);
+
+    loadScript().then(() => {
+      // Force TikTok to re-scan this blockquote
+      if (containerRef.current) {
+        const blockquote = containerRef.current.querySelector(".tiktok-embed");
+        if (blockquote && window?.tiktokEmbedLoad) {
+          window.tiktokEmbedLoad();
+        } else {
+          // fallback: re-insert script to force scan
+          const script = document.createElement("script");
+          script.src = "https://www.tiktok.com/embed.js";
+          script.async = true;
+          document.body.appendChild(script);
+        }
+      }
+    });
+  }, [videoId]);
 
   return (
-    <div className="w-full">
+    <div ref={containerRef} className="w-full">
       <blockquote
         className="tiktok-embed"
         cite={`https://www.tiktok.com/@${username}/video/${videoId}`}
