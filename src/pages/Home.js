@@ -35,7 +35,7 @@ export default function Hero() {
             // inner rim for premium “framed” feel
             "ring-1 ring-white/10",
             // premium dark surface
-            "bg-gradient-to-b from-[#1a1a1f] via-[#141418] to-[#0e0e12]",
+            "bg-[#575656]",
             // stronger elevation
             "shadow-[0_40px_110px_rgba(0,0,0,0.26)]",
           ].join(" ")}
