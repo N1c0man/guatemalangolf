@@ -166,7 +166,7 @@ export default function Home() {
                   </Link>
 
                   <Link
-                    to="/links"
+                    to="/about"
                     className={[
                       "inline-flex items-center justify-center rounded-full",
                       "border border-white/22 bg-transparent px-6 py-3",
@@ -175,7 +175,7 @@ export default function Home() {
                       "focus:outline-none focus:ring-2 focus:ring-gg-lava/45",
                     ].join(" ")}
                   >
-                    Link in Bio
+                    About Us
                   </Link>
                 </motion.div>
               </div>
