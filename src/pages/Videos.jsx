@@ -1,5 +1,5 @@
 // src/pages/Videos.jsx
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useRef, useState, useEffect } from "react";
 import TikTokEmbed from "../components/TikTokEmbed";
 import { VIDEOS } from "../data/videos";
 
@@ -20,12 +20,46 @@ export default function Videos() {
   const STEP = 6; // how many to add each click
   const [visibleCount, setVisibleCount] = useState(STEP);
 
+  // Track which range was just revealed (for fade-in)
+  const [justRevealedFrom, setJustRevealedFrom] = useState(null);
+
+  // Refs for smooth scroll
+  const cardRefs = useRef({}); // { [id]: HTMLElement }
+
   const visibleVideos = useMemo(
     () => VIDEOS.slice(0, visibleCount),
     [visibleCount]
   );
 
   const canLoadMore = visibleCount < VIDEOS.length;
+
+  // Smooth scroll to the first newly revealed card when visibleCount increases
+  useEffect(() => {
+    if (justRevealedFrom == null) return;
+
+    const firstNewId = visibleVideos[justRevealedFrom];
+    const el = firstNewId ? cardRefs.current[firstNewId] : null;
+
+    if (el) {
+      // slight delay to ensure DOM is painted
+      requestAnimationFrame(() => {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
+
+    // Remove "new" styling after the animation window
+    const t = setTimeout(() => setJustRevealedFrom(null), 900);
+    return () => clearTimeout(t);
+  }, [justRevealedFrom, visibleVideos]);
+
+  function handleLoadMore() {
+    setVisibleCount((current) => {
+      const next = Math.min(current + STEP, VIDEOS.length);
+      // mark the index where new items start
+      setJustRevealedFrom(current);
+      return next;
+    });
+  }
 
   return (
     <div className="space-y-8">
@@ -55,19 +89,32 @@ export default function Videos() {
 
       {/* TikTok grid */}
       <div className="grid gap-6 md:grid-cols-2">
-        {visibleVideos.map((id) => (
-          <div
-            key={id}
-            className={[
-              "rounded-3xl bg-gg-sand p-4 sm:p-6 border border-black/10",
-              "shadow-[0_20px_60px_rgba(0,0,0,0.10)]",
-              "transition-transform duration-300 ease-out",
-              "hover:-translate-y-1 hover:shadow-[0_26px_80px_rgba(0,0,0,0.14)]",
-            ].join(" ")}
-          >
-            <TikTokEmbed videoId={id} username="guatemalangolf" />
-          </div>
-        ))}
+        {visibleVideos.map((id, idx) => {
+          const isNew = justRevealedFrom != null && idx >= justRevealedFrom;
+
+          return (
+            <div
+              key={id}
+              ref={(node) => {
+                if (node) cardRefs.current[id] = node;
+              }}
+              className={[
+                "rounded-3xl bg-gg-sand p-4 sm:p-6 border border-black/10",
+                "shadow-[0_20px_60px_rgba(0,0,0,0.10)]",
+                // Hover lift
+                "transition-transform duration-300 ease-out",
+                "hover:-translate-y-1 hover:shadow-[0_26px_80px_rgba(0,0,0,0.14)]",
+                // Fade-in for newly revealed items
+                "transition-all duration-700 ease-out",
+                isNew
+                  ? "opacity-0 translate-y-2 animate-[ggFadeUp_700ms_ease-out_forwards]"
+                  : "opacity-100 translate-y-0",
+              ].join(" ")}
+            >
+              <TikTokEmbed videoId={id} username="guatemalangolf" />
+            </div>
+          );
+        })}
       </div>
 
       {/* Load more */}
@@ -75,7 +122,7 @@ export default function Videos() {
         {canLoadMore ? (
           <button
             type="button"
-            onClick={() => setVisibleCount((c) => Math.min(c + STEP, VIDEOS.length))}
+            onClick={handleLoadMore}
             className="inline-flex items-center justify-center rounded-full bg-white/80 border border-black/10 px-6 py-3 text-sm font-semibold text-gg-ink
                        backdrop-blur shadow-[0_18px_45px_rgba(0,0,0,0.10)]
                        hover:shadow-[0_22px_55px_rgba(0,0,0,0.14)]
@@ -118,6 +165,14 @@ export default function Videos() {
           </a>
         </div>
       </div>
+
+      {/* Local keyframes (scoped) */}
+      <style>{`
+        @keyframes ggFadeUp {
+          from { opacity: 0; transform: translateY(8px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
     </div>
   );
 }
