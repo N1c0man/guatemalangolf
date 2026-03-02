@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import heroLogo from "../assets/gg_hero_logo_transparent.png";
 import { Helmet } from "react-helmet";
+import { SITE_URL, buildUrl } from "../utils/seo";
 
 const fadeUp = {
   initial: { opacity: 0, y: 14 },
@@ -11,31 +12,31 @@ const fadeUp = {
 };
 
 export default function Home() {
-  // ✅ Canonical domain should NEVER depend on window.location (previews, http, non-www, etc.)
-  const SITE_URL = "https://www.guatemalangolf.com";
-  const canonicalUrl = SITE_URL; // homepage canonical (no trailing slash)
-  const ogImage = `${SITE_URL}/og-image.jpg`; // put this file in /public/og-image.jpg
+  const canonicalUrl = buildUrl("/"); // resolves to https://www.guatemalangolf.com
+  const ogImage = `${SITE_URL}/og-image.jpg`;
 
   return (
     <>
       <Helmet>
         <title>Guatemalan Golf | Volcano Views & Destination Golf Travel</title>
-
         <meta
           name="description"
           content="Discover destination golf in Guatemala. Championship courses, volcano views, Antigua day trips, and Lake Atitlán adventures."
         />
 
-        {/* ✅ Canonical */}
         <link rel="canonical" href={canonicalUrl} />
 
         {/* Open Graph */}
-        <meta property="og:title" content="Guatemalan Golf | Volcano Views & Destination Golf Travel" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Guatemalan Golf" />
+        <meta
+          property="og:title"
+          content="Guatemalan Golf | Volcano Views & Destination Golf Travel"
+        />
         <meta
           property="og:description"
           content="Discover destination golf in Guatemala. Championship courses, volcano views, Antigua day trips, and Lake Atitlán adventures."
         />
-        <meta property="og:type" content="website" />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:image" content={ogImage} />
         <meta property="og:image:width" content="1200" />
@@ -43,7 +44,11 @@ export default function Home() {
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Guatemalan Golf | Volcano Views & Destination Golf Travel" />
+        <meta name="twitter:url" content={canonicalUrl} />
+        <meta
+          name="twitter:title"
+          content="Guatemalan Golf | Volcano Views & Destination Golf Travel"
+        />
         <meta
           name="twitter:description"
           content="Discover destination golf in Guatemala. Championship courses, volcano views, Antigua day trips, and Lake Atitlán adventures."

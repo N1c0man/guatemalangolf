@@ -11,8 +11,10 @@ import MainLayout from "./layouts/MainLayout";
 import Videos from "./pages/Videos";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import Merch from "./pages/Merch";      // ✅ NEW
+import Contact from "./pages/Contact";  // ✅ NEW
 
-// Simple placeholder pages so the build never fails while we rebuild
+// Simple placeholder pages (only keeping Links now)
 function Placeholder({ title, subtitle }) {
   return (
     <div className="min-h-[60vh] px-6 py-16">
@@ -23,9 +25,6 @@ function Placeholder({ title, subtitle }) {
         <div className="mt-8 rounded-2xl border border-white/10 bg-white/5 p-6">
           <p className="text-sm text-gray-200">
             This page is coming next. ✅
-          </p>
-          <p className="mt-2 text-sm text-gray-400">
-            We’ll wire this up to TikTok + merch once the core theme is in.
           </p>
         </div>
       </div>
@@ -40,32 +39,16 @@ export default function App() {
 
       <Routes>
         <Route element={<MainLayout />}>
-          {/* Core */}
-          <Route path="/" element={<Home />} />
 
-          {/* ✅ REAL Videos page */}
+          <Route path="/" element={<Home />} />
           <Route path="/videos" element={<Videos />} />
 
-          {/* Placeholder pages */}
-          <Route
-            path="/merch"
-            element={
-              <Placeholder
-                title="Merch"
-                subtitle="Hats, shirts, and drops — link out to WhatsApp/IG for ordering (for now)."
-              />
-            }
-          />
+          {/* ✅ Real pages */}
+          <Route path="/merch" element={<Merch />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
-          <Route
-            path="/contact"
-            element={
-              <Placeholder
-                title="Contact"
-                subtitle="Add WhatsApp, Instagram, and email here."
-              />
-            }
-          />
+
+          {/* Keep links placeholder if needed */}
           <Route
             path="/links"
             element={
@@ -76,7 +59,6 @@ export default function App() {
             }
           />
 
-          {/* Safety */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>

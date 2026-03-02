@@ -2,6 +2,7 @@
 import React, { useMemo, useRef, useState, useEffect } from "react";
 import TikTokEmbed from "../components/TikTokEmbed";
 import { VIDEOS } from "../data/videos";
+import { Helmet } from "react-helmet";
 
 function TikTokIcon({ className = "" }) {
   return (
@@ -17,6 +18,12 @@ function TikTokIcon({ className = "" }) {
 }
 
 export default function Videos() {
+  // ✅ SEO (canonical domain + per-page URL)
+  const SITE_URL = "https://www.guatemalangolf.com";
+  const canonicalUrl = `${SITE_URL}/videos`;
+  // Use your global OG image (stable). Later you can make a /og/videos.jpg if you want.
+  const ogImage = `${SITE_URL}/og-image.jpg`;
+
   const STEP = 6; // how many to add each click
   const [visibleCount, setVisibleCount] = useState(STEP);
 
@@ -63,6 +70,26 @@ export default function Videos() {
 
   return (
     <div className="space-y-8">
+      <Helmet>
+        <title>Golf Videos in Guatemala | Guatemalan Golf</title>
+        <meta
+          name="description"
+          content="Watch golf videos from Guatemala — volcano backdrops, course highlights, travel clips, and the vibes. Curated from @guatemalangolf."
+        />
+
+        {/* ✅ Canonical + URL consistency */}
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:url" content={canonicalUrl} />
+
+        {/* Optional: page-specific OG text (Google may use, social may ignore on SPA) */}
+        <meta property="og:title" content="Golf Videos in Guatemala | Guatemalan Golf" />
+        <meta
+          property="og:description"
+          content="Watch golf videos from Guatemala — volcano backdrops, course highlights, travel clips, and the vibes."
+        />
+        <meta property="og:image" content={ogImage} />
+      </Helmet>
+
       {/* Header (premium “glass” card) */}
       <header className="rounded-3xl bg-white/80 border border-black/10 p-6 sm:p-8 backdrop-blur shadow-[0_22px_70px_rgba(0,0,0,0.08)]">
         <div className="flex items-start gap-3">
