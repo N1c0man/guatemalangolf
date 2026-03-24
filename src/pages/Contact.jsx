@@ -35,6 +35,20 @@ export default function Contact() {
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2">
 
+          {/* WhatsApp */}
+          <a
+            href="https://wa.me/50242191025?text=Hi%20I%E2%80%99m%20interested%20in%20golf%20in%20Guatemala"
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-2xl border border-green-200 bg-green-50 p-5 hover:shadow-md hover:scale-[1.02] transition"
+          >
+            <p className="font-semibold text-green-700">WhatsApp</p>
+            <p className="text-sm text-green-600 mt-1">
+              Plan your golf trip directly with us or call for more info
+            </p>
+          </a>
+
+          {/* TikTok */}
           <a
             href="https://www.tiktok.com/@guatemalangolf"
             target="_blank"
@@ -47,8 +61,8 @@ export default function Contact() {
             </p>
           </a>
 
-          {/* Add when ready */}
-          {/* 
+          {/* Future: Instagram */}
+          {/*
           <a
             href="https://instagram.com/yourhandle"
             target="_blank"
@@ -59,7 +73,8 @@ export default function Contact() {
           </a>
           */}
 
-          {/* 
+          {/* Future: Email */}
+          {/*
           <a
             href="mailto:youremail@example.com"
             className="rounded-2xl border border-black/10 bg-white/70 p-5 hover:shadow-md transition"
