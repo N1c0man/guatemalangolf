@@ -176,8 +176,8 @@ export default function Merch() {
               Signature hat + video preview
             </h2>
             <p className="mt-2 max-w-2xl text-sm leading-6 text-gg-muted">
-              A premium first look at the collection. See the featured hat and
-              watch the TikTok preview side-by-side.
+              A premium first look at the collection. On mobile, the featured hat
+              leads first, followed by details and the TikTok preview.
             </p>
           </div>
 
@@ -187,51 +187,76 @@ export default function Merch() {
             rel="noreferrer"
             className="inline-flex items-center justify-center rounded-full bg-gg-lava px-5 py-2.5 text-sm font-semibold text-white transition hover:scale-[1.02] hover:bg-gg-ember"
           >
-            Order Now!
+            Ask about this drop
           </a>
         </div>
 
-        <div className="mt-6 grid gap-6 lg:grid-cols-2">
-          <figure className="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_14px_38px_rgba(0,0,0,0.06)]">
-            <img
-              src={HAT_IMAGES[0].src}
-              alt={HAT_IMAGES[0].alt}
-              className="h-full w-full object-cover"
-              loading="eager"
-            />
-            <figcaption className="border-t border-black/5 px-4 py-3">
-              <p className="text-sm font-semibold text-gg-ink">
-                {HAT_IMAGES[0].title}
-              </p>
-            </figcaption>
-          </figure>
+        <div className="mt-6 grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="space-y-4">
+            <figure className="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_14px_38px_rgba(0,0,0,0.06)]">
+              <img
+                src={HAT_IMAGES[0].src}
+                alt={HAT_IMAGES[0].alt}
+                className="h-full w-full object-cover"
+                loading="eager"
+              />
+              <figcaption className="border-t border-black/5 px-4 py-3">
+                <p className="text-sm font-semibold text-gg-ink">
+                  {HAT_IMAGES[0].title}
+                </p>
+              </figcaption>
+            </figure>
 
-          <div className="flex h-full flex-col justify-between rounded-2xl border border-black/10 bg-gradient-to-br from-white to-neutral-50 p-4 shadow-[0_14px_38px_rgba(0,0,0,0.06)]">
-            <div>
+            <div className="rounded-2xl border border-black/10 bg-gradient-to-br from-white to-neutral-50 p-5 shadow-[0_14px_38px_rgba(0,0,0,0.06)]">
+              <p className="text-sm font-semibold text-gg-ink">Featured hat</p>
+              <h3 className="mt-1 text-xl font-semibold tracking-tight text-gg-ink">
+                Built for golf, travel, and Guatemala vibes
+              </h3>
+              <p className="mt-2 text-sm leading-6 text-gg-muted">
+                See the featured hat first, then watch the TikTok preview below.
+                This keeps the page cleaner on mobile while still feeling premium
+                on larger screens.
+              </p>
+
+              <div className="mt-4 flex flex-wrap gap-3">
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center rounded-full bg-gg-lava px-5 py-2.5 text-sm font-semibold text-white transition hover:scale-[1.02] hover:bg-gg-ember"
+                >
+                  Order on WhatsApp
+                </a>
+
+                <a
+                  href="https://www.tiktok.com/@guatemalangolf"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center rounded-full border border-black/10 bg-white px-5 py-2.5 text-sm font-semibold text-gg-ink transition hover:bg-black hover:text-white"
+                >
+                  Follow on TikTok
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-2xl border border-black/10 bg-gradient-to-br from-white to-neutral-50 p-4 shadow-[0_14px_38px_rgba(0,0,0,0.06)]">
+            <div className="mb-4">
               <p className="text-sm font-semibold text-gg-ink">Video preview</p>
               <h3 className="mt-1 text-xl font-semibold tracking-tight text-gg-ink">
                 See the hats on TikTok
               </h3>
               <p className="mt-2 text-sm leading-6 text-gg-muted">
-                See the hats in a more natural lifestyle setting and contact us
-                directly for ordering.
+                Watch the hats in a more natural lifestyle setting and message us
+                directly when you are ready to order.
               </p>
             </div>
 
-            <div className="mt-4">
+            <div className="mx-auto max-w-full overflow-hidden">
               <TikTokEmbed url={TIKTOK_VIDEO_URL} />
             </div>
 
             <div className="mt-4 flex flex-wrap gap-3">
-              <a
-                href="https://www.tiktok.com/@guatemalangolf"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center justify-center rounded-full bg-black px-5 py-2.5 text-sm font-semibold text-white transition hover:scale-[1.02]"
-              >
-                Follow on TikTok
-              </a>
-
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
