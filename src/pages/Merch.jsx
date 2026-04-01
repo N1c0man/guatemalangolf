@@ -76,7 +76,7 @@ function TikTokEmbed({ url }) {
         className="tiktok-embed"
         cite={url}
         data-video-id={videoId}
-        style={{ maxWidth: "605px", minWidth: "325px", margin: "0 auto" }}
+        style={{ maxWidth: "100%", minWidth: "0", margin: "0 auto" }}
       >
         <section>
           <a href={url} target="_blank" rel="noreferrer">
@@ -168,7 +168,7 @@ export default function Merch() {
         </div>
       </header>
 
-      <section className="rounded-3xl border border-black/10 bg-white/80 p-6 shadow-[0_22px_70px_rgba(0,0,0,0.08)] backdrop-blur sm:p-8">
+      <section className="overflow-hidden rounded-3xl border border-black/10 bg-white/80 p-6 shadow-[0_22px_70px_rgba(0,0,0,0.08)] backdrop-blur sm:p-8">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="text-sm font-semibold text-gg-ink">Featured drop</p>
@@ -192,14 +192,16 @@ export default function Merch() {
         </div>
 
         <div className="mt-6 grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="space-y-4">
+          <div className="min-w-0 space-y-4">
             <figure className="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_14px_38px_rgba(0,0,0,0.06)]">
-              <img
-                src={HAT_IMAGES[0].src}
-                alt={HAT_IMAGES[0].alt}
-                className="h-full w-full object-cover"
-                loading="eager"
-              />
+              <div className="aspect-[4/5] w-full sm:aspect-[5/4] lg:aspect-[4/5]">
+                <img
+                  src={HAT_IMAGES[0].src}
+                  alt={HAT_IMAGES[0].alt}
+                  className="block h-full w-full object-cover"
+                  loading="eager"
+                />
+              </div>
               <figcaption className="border-t border-black/5 px-4 py-3">
                 <p className="text-sm font-semibold text-gg-ink">
                   {HAT_IMAGES[0].title}
@@ -240,7 +242,7 @@ export default function Merch() {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-black/10 bg-gradient-to-br from-white to-neutral-50 p-4 shadow-[0_14px_38px_rgba(0,0,0,0.06)]">
+          <div className="min-w-0 rounded-2xl border border-black/10 bg-gradient-to-br from-white to-neutral-50 p-4 shadow-[0_14px_38px_rgba(0,0,0,0.06)]">
             <div className="mb-4">
               <p className="text-sm font-semibold text-gg-ink">Video preview</p>
               <h3 className="mt-1 text-xl font-semibold tracking-tight text-gg-ink">
@@ -295,12 +297,14 @@ export default function Merch() {
               key={index}
               className="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_14px_38px_rgba(0,0,0,0.06)]"
             >
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="h-full w-full object-cover"
-                loading="lazy"
-              />
+              <div className="aspect-[4/5] w-full sm:aspect-[5/4]">
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="block h-full w-full object-cover"
+                  loading="lazy"
+                />
+              </div>
               <figcaption className="border-t border-black/5 px-4 py-3">
                 <p className="text-sm font-semibold text-gg-ink">{image.title}</p>
               </figcaption>
