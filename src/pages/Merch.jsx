@@ -34,7 +34,8 @@ const HAT_IMAGES = [
 const TIKTOK_VIDEO_URL =
   "https://www.tiktok.com/@guatemalangolf/video/7623198212916137236";
 
-const WHATSAPP_URL = "https://wa.me/50242191025";
+const WHATSAPP_URL =
+  "https://wa.me/50242191025?text=Hi%20I%27m%20interested%20in%20ordering%20Guatemalan%20Golf%20hats";
 
 function getTikTokVideoId(url) {
   const match = url.match(/\/video\/(\d+)/);
@@ -112,8 +113,8 @@ export default function Merch() {
         <meta property="og:image" content={ogImage} />
       </Helmet>
 
-      <header className="rounded-3xl bg-white/80 border border-black/10 p-6 sm:p-8 backdrop-blur shadow-[0_22px_70px_rgba(0,0,0,0.08)]">
-        <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight text-gg-ink">
+      <header className="rounded-3xl border border-black/10 bg-white/80 p-6 shadow-[0_22px_70px_rgba(0,0,0,0.08)] backdrop-blur sm:p-8">
+        <h1 className="text-2xl font-semibold tracking-tight text-gg-ink sm:text-3xl">
           Merch
         </h1>
 
@@ -130,7 +131,8 @@ export default function Merch() {
             </h2>
             <p className="mt-2 text-sm leading-6 text-gg-muted">
               Limited-run caps inspired by Guatemala’s volcanic landscape and golf
-              lifestyle. Reach out directly for availability, pricing, and shipping.
+              lifestyle. Reach out directly for availability, pricing, and
+              shipping.
             </p>
 
             <div className="mt-4 flex flex-wrap gap-3">
@@ -138,7 +140,7 @@ export default function Merch() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center rounded-full bg-gg-lava px-5 py-2.5 text-sm font-semibold text-white shadow-[0_18px_45px_rgba(230,57,46,0.22)] transition hover:bg-gg-ember hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-gg-lava/45"
+                className="inline-flex items-center justify-center rounded-full bg-gg-lava px-5 py-2.5 text-sm font-semibold text-white shadow-[0_18px_45px_rgba(230,57,46,0.22)] transition hover:scale-[1.02] hover:bg-gg-ember focus:outline-none focus:ring-2 focus:ring-gg-lava/45"
               >
                 Order on WhatsApp
               </a>
@@ -157,8 +159,8 @@ export default function Merch() {
           <div className="rounded-2xl border border-black/10 bg-gradient-to-br from-white to-orange-50/70 p-5">
             <p className="text-sm font-semibold text-gg-ink">How to buy</p>
             <ol className="mt-3 space-y-2 text-sm leading-6 text-gg-muted">
-              <li>1. Browse the photos below</li>
-              <li>2. Pick your favorite color or style</li>
+              <li>1. Browse the featured hat and video below</li>
+              <li>2. Check the rest of the gallery for more styles</li>
               <li>3. Message on WhatsApp for details</li>
               <li>4. Check TikTok for more merch drops</li>
             </ol>
@@ -166,60 +168,61 @@ export default function Merch() {
         </div>
       </header>
 
-      <section className="rounded-3xl bg-white/80 border border-black/10 p-6 sm:p-8 backdrop-blur shadow-[0_22px_70px_rgba(0,0,0,0.08)]">
-        <div className="flex items-end justify-between gap-4 flex-wrap">
+      <section className="rounded-3xl border border-black/10 bg-white/80 p-6 shadow-[0_22px_70px_rgba(0,0,0,0.08)] backdrop-blur sm:p-8">
+        <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <p className="text-sm font-semibold text-gg-ink">Photo gallery</p>
+            <p className="text-sm font-semibold text-gg-ink">Featured drop</p>
             <h2 className="mt-1 text-2xl font-semibold tracking-tight text-gg-ink">
-              Hat collection
+              Signature hat + video preview
             </h2>
+            <p className="mt-2 max-w-2xl text-sm leading-6 text-gg-muted">
+              A premium first look at the collection. See the featured hat and
+              watch the TikTok preview side-by-side.
+            </p>
           </div>
 
           <a
             href={WHATSAPP_URL}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center justify-center rounded-full border border-black/10 bg-white px-4 py-2 text-sm font-semibold text-gg-ink transition hover:bg-black hover:text-white"
+            className="inline-flex items-center justify-center rounded-full bg-gg-lava px-5 py-2.5 text-sm font-semibold text-white transition hover:scale-[1.02] hover:bg-gg-ember"
           >
-            Ask about availability
+            Order Now!
           </a>
         </div>
 
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-          {HAT_IMAGES.map((image, index) => (
-            <figure
-              key={index}
-              className={`overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_14px_38px_rgba(0,0,0,0.06)] ${
-                index === 0 ? "sm:col-span-2 xl:col-span-2" : ""
-              }`}
-            >
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="h-full w-full object-cover"
-                loading="lazy"
-              />
-              <figcaption className="border-t border-black/5 px-4 py-3">
-                <p className="text-sm font-semibold text-gg-ink">{image.title}</p>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-      </section>
+        <div className="mt-6 grid gap-6 lg:grid-cols-2">
+          <figure className="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_14px_38px_rgba(0,0,0,0.06)]">
+            <img
+              src={HAT_IMAGES[0].src}
+              alt={HAT_IMAGES[0].alt}
+              className="h-full w-full object-cover"
+              loading="eager"
+            />
+            <figcaption className="border-t border-black/5 px-4 py-3">
+              <p className="text-sm font-semibold text-gg-ink">
+                {HAT_IMAGES[0].title}
+              </p>
+            </figcaption>
+          </figure>
 
-      <section className="rounded-3xl bg-white/80 border border-black/10 p-6 sm:p-8 backdrop-blur shadow-[0_22px_70px_rgba(0,0,0,0.08)]">
-        <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-          <div>
-            <p className="text-sm font-semibold text-gg-ink">Video preview</p>
-            <h2 className="mt-1 text-2xl font-semibold tracking-tight text-gg-ink">
-              See the hats on TikTok
-            </h2>
-            <p className="mt-3 max-w-xl text-sm leading-6 text-gg-muted">
-              See the hats in a more natural lifestyle setting and contact us
-              directly for ordering.
-            </p>
+          <div className="flex h-full flex-col justify-between rounded-2xl border border-black/10 bg-gradient-to-br from-white to-neutral-50 p-4 shadow-[0_14px_38px_rgba(0,0,0,0.06)]">
+            <div>
+              <p className="text-sm font-semibold text-gg-ink">Video preview</p>
+              <h3 className="mt-1 text-xl font-semibold tracking-tight text-gg-ink">
+                See the hats on TikTok
+              </h3>
+              <p className="mt-2 text-sm leading-6 text-gg-muted">
+                See the hats in a more natural lifestyle setting and contact us
+                directly for ordering.
+              </p>
+            </div>
 
-            <div className="mt-5 flex flex-wrap gap-3">
+            <div className="mt-4">
+              <TikTokEmbed url={TIKTOK_VIDEO_URL} />
+            </div>
+
+            <div className="mt-4 flex flex-wrap gap-3">
               <a
                 href="https://www.tiktok.com/@guatemalangolf"
                 target="_blank"
@@ -233,16 +236,51 @@ export default function Merch() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center justify-center rounded-full bg-gg-lava px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-gg-ember hover:scale-[1.02]"
+                className="inline-flex items-center justify-center rounded-full border border-black/10 bg-white px-5 py-2.5 text-sm font-semibold text-gg-ink transition hover:bg-black hover:text-white"
               >
                 Contact on WhatsApp
               </a>
             </div>
           </div>
+        </div>
+      </section>
 
+      <section className="rounded-3xl border border-black/10 bg-white/80 p-6 shadow-[0_22px_70px_rgba(0,0,0,0.08)] backdrop-blur sm:p-8">
+        <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <TikTokEmbed url={TIKTOK_VIDEO_URL} />
+            <p className="text-sm font-semibold text-gg-ink">Photo gallery</p>
+            <h2 className="mt-1 text-2xl font-semibold tracking-tight text-gg-ink">
+              More hats in the collection
+            </h2>
           </div>
+
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center justify-center rounded-full border border-black/10 bg-white px-4 py-2 text-sm font-semibold text-gg-ink transition hover:bg-black hover:text-white"
+          >
+            Ask about availability
+          </a>
+        </div>
+
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-2">
+          {HAT_IMAGES.slice(1).map((image, index) => (
+            <figure
+              key={index}
+              className="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_14px_38px_rgba(0,0,0,0.06)]"
+            >
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
+              <figcaption className="border-t border-black/5 px-4 py-3">
+                <p className="text-sm font-semibold text-gg-ink">{image.title}</p>
+              </figcaption>
+            </figure>
+          ))}
         </div>
       </section>
     </div>
