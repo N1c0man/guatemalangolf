@@ -90,7 +90,7 @@ function TikTokEmbed({ url }) {
 
 export default function Merch() {
   const canonicalUrl = buildUrl("/merch");
-  const ogImage = `${SITE_URL}/og-image.jpg`;
+  const ogImage = `${SITE_URL}/og-merch.jpg`;
 
   return (
     <div className="space-y-8">
@@ -100,7 +100,12 @@ export default function Merch() {
           name="description"
           content="Official Guatemalan Golf merch — volcano-inspired hats, shirts, and limited drops. Apparel built for golf, travel, and paradise vibes."
         />
+
         <link rel="canonical" href={canonicalUrl} />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Guatemalan Golf" />
         <meta property="og:url" content={canonicalUrl} />
         <meta
           property="og:title"
@@ -111,6 +116,25 @@ export default function Merch() {
           content="Volcano-inspired hats, shirts, and limited drops from Guatemalan Golf."
         />
         <meta property="og:image" content={ogImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta
+          property="og:image:alt"
+          content="Guatemalan Golf merchandise including hats, golf accessories, and premium apparel with a shop now call to action"
+        />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={canonicalUrl} />
+        <meta
+          name="twitter:title"
+          content="Guatemalan Golf Merch | Official Apparel"
+        />
+        <meta
+          name="twitter:description"
+          content="Volcano-inspired hats, shirts, and limited drops from Guatemalan Golf."
+        />
+        <meta name="twitter:image" content={ogImage} />
       </Helmet>
 
       <header className="rounded-3xl border border-black/10 bg-white/80 p-6 shadow-[0_22px_70px_rgba(0,0,0,0.08)] backdrop-blur sm:p-8">
